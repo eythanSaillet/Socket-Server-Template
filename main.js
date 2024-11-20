@@ -19,10 +19,16 @@ const wss =
 server.listen(serverPort);
 console.log(`Server started on port ${serverPort} in stage ${process.env.NODE_ENV}`);
 
+let clientID = 0
 wss.on("connection", function (ws, req) {
   console.log("Connection Opened");
   console.log("Client size: ", wss.clients.size);
-
+  if(clientID === 5) {
+    clientID = 1
+  }
+  else { clientID++ }
+  console.log("clientID = "+clientID)
+  
   if (wss.clients.size === 1) {
     console.log("first connection. starting keepalive");
     keepServerAlive();
