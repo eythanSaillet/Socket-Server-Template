@@ -27,7 +27,7 @@ wss.on("connection", function (ws, req) {
     clientID = 1
   }
   else { clientID++ }
-  ws.send('message')
+  ws.send(clientID)
   console.log("clientID = "+clientID)
   
   if (wss.clients.size === 1) {
